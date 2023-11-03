@@ -10,4 +10,4 @@ This project has been developed by students of B130, B131, B158, B169, B218 batc
 
 
 ## Web App
-* **Web URL:** [https://itmasteryschool.com](https://itmasteryschool.com)
+* **Web URL:** [https://joyfulcampus.com](https://joyfulcampus.com)
