@@ -1,6 +1,6 @@
-# IT Mastery School
+# Joyful Campus
 
-This project has been developed by students of B130, B131, B158, B169, B218 batches 
+This project has been developed by students of B153 B154, B155, B156, B178 batches 
 
 ## API
 * **Base URL:** https://mycampusmates.com/app
