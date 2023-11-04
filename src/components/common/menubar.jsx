@@ -6,7 +6,7 @@ import MainMenu from "./main-menu";
 
 const Menubar = () => {
   return (
-    <Navbar expand="lg">
+    <Navbar expand="lg" sticky="top" className="bg-white">
       <Container>
         <Navbar.Brand as={Link} to="/">
           <Image src="/images/logo/logo.png" alt={config.project.name} />

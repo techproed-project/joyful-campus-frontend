@@ -1,0 +1,13 @@
+@use "../../styles/variables" as v;
+
+.welcome{
+    h2{
+        color: v.$color1;
+        font-size: 2.2rem;
+        text-shadow: 0 0 15px v.$color1;
+    }
+
+    ul li{
+        margin-bottom: 15px;
+    }
+}

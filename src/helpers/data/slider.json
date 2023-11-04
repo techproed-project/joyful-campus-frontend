@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "image": "slider-01.jpg",
+        "title": "Ignite Your IT Journey: Unlock the World of Tech Brilliance!",
+        "desc": " Explore a dynamic range of IT courses, expert instructors, and state-of-the-art labs, propelling your tech dreams to new heights."
+    },
+    {
+        "id": 2,
+        "image": "slider-02.jpg",
+        "title": "Empower Your Future with Tech Prowess: Enroll Now!",
+        "desc": "Join our innovative IT school and gain hands-on skills, industry certifications, and endless opportunities in the ever-evolving world of technology."
+    }
+]

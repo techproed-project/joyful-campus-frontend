@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "title": "Introduction to Programming",
+    "description": "Join our comprehensive Introduction to Programming course where you'll learn the fundamental concepts of programming languages and develop problem-solving skills. Dive into various programming paradigms, data types, control structures, and algorithms. By the end of this course, you'll have a solid foundation in programming that will serve as a stepping stone for your IT journey.",
+    "date": "2023-09-15",
+    "time": "10:00 AM",
+    "location": "Room 101",
+    "image": "events-01.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Web Development Fundamentals",
+    "description": "Embark on a journey into the world of web development with our Web Development Fundamentals course. Explore the building blocks of the modern web, including HTML5 and CSS3. Learn to create responsive and visually appealing web pages. Get hands-on experience with basic front-end scripting and gain insight into the principles of user-centered design.",
+    "date": "2023-09-18",
+    "time": "2:00 PM",
+    "location": "Computer Lab A",
+    "image": "events-01.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Introduction to Algorithms",
+    "description": "Unlock the power of algorithms in our Introduction to Algorithms course. Delve into the realm of algorithm design and analysis, and understand how they form the backbone of efficient software. Learn about sorting, searching, and graph algorithms. By the end of this course, you'll be equipped with the knowledge to solve complex computational challenges.",
+    "date": "2023-09-20",
+    "time": "9:30 AM",
+    "location": "Lecture Hall B",
+    "image": "events-01.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Database Management Systems",
+    "description": "Discover the heart of data storage and retrieval in our Database Management Systems course. Explore the world of relational databases and master the art of crafting SQL queries. Dive into normalization and database design principles. By the end of this course, you'll have the skills to create and manage robust databases.",
+    "date": "2023-09-25",
+    "time": "3:00 PM",
+    "location": "Room 205",
+    "image": "events-01.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Networking Fundamentals",
+    "description": "Journey into the intricate web of computer networking with our Networking Fundamentals course. Understand the basics of network protocols, routing, and subnetting. Gain insights into networking hardware and security. By the end of this course, you'll be equipped to design and troubleshoot basic network configurations.",
+    "date": "2023-09-28",
+    "time": "10:00 AM",
+    "location": "Computer Lab B",
+    "image": "events-01.jpg"
+  },
+  {
+    "id": 6,
+    "title": "Cybersecurity Basics",
+    "description": "Immerse yourself in the critical realm of cybersecurity with our Cybersecurity Basics course. Explore fundamental concepts such as cryptography, network security, and threat detection. Learn to identify common vulnerabilities and implement countermeasures. By the end of this course, you'll be prepared to safeguard digital assets.",
+    "date": "2023-10-03",
+    "time": "1:30 PM",
+    "location": "Lecture Hall A",
+    "image": "events-01.jpg"
+  },
+  {
+    "id": 7,
+    "title": "Python Programming Workshop",
+    "description": "Unleash the power of Python in our intensive Python Programming Workshop. Learn the syntax, data structures, and control flow of this versatile language. Dive into object-oriented programming and explore Python's vast ecosystem of libraries. By the end of this workshop, you'll be equipped to build your own Python applications.",
+    "date": "2023-10-08",
+    "time": "9:00 AM",
+    "location": "Room 301",
+    "image": "events-01.jpg"
+  },
+  {
+    "id": 8,
+    "title": "Web Development Bootcamp",
+    "description": "Immerse yourself in an intensive Web Development Bootcamp where you'll master the art of building modern web applications. Explore front-end frameworks like React and Vue. Dive into back-end technologies and learn to create RESTful APIs. By the end of this bootcamp, you'll have a portfolio of web projects to showcase your skills.",
+    "date": "2023-10-12",
+    "time": "10:00 AM",
+    "location": "Computer Lab C",
+    "image": "events-01.jpg"
+  },
+  {
+    "id": 9,
+    "title": "Data Science Essentials",
+    "description": "Dive into the world of data analysis and visualization with our Data Science Essentials course. Learn to wrangle and clean data, perform exploratory analysis, and create insightful visualizations. Gain proficiency in tools like pandas and matplotlib. By the end of this course, you'll be equipped to extract valuable insights from data.",
+    "date": "2030-10-18",
+    "time": "2:30 PM",
+    "location": "Lecture Hall B",
+    "image": "events-01.jpg"
+  },
+  {
+    "id": 10,
+    "title": "Agile Project Management",
+    "description": "Master the principles of Agile methodologies and project management in our Agile Project Management course. Explore iterative development, user stories, and sprint planning. Learn to foster collaboration and adapt to changing project requirements. By the end of this course, you'll be ready to lead successful Agile projects.",
+    "date": "2023-10-22",
+    "time": "11:00 AM",
+    "location": "Room 102",
+    "image": "events-01.jpg"
+  },
+  {
+    "id": 11,
+    "title": "Machine Learning Workshop",
+    "description": "Step into the fascinating world of machine learning with our hands-on Machine Learning Workshop. Explore supervised and unsupervised learning algorithms. Dive into model training, evaluation, and deployment. By the end of this workshop, you'll have the skills to create machine learning models for real-world applications.",
+    "date": "2023-10-28",
+    "time": "9:00 AM",
+    "location": "Computer Lab A",
+    "image": "events-01.jpg"
+  },
+  {
+    "id": 12,
+    "title": "Cloud Computing Seminar",
+    "description": "Soar into the cloud with our Cloud Computing Seminar. Explore cloud service models like IaaS, PaaS, and SaaS. Learn to deploy applications on cloud platforms like AWS and Azure. Dive into containerization with Docker and orchestration with Kubernetes. By the end of this seminar, you'll be ready to harness the power of the cloud.",
+    "date": "2030-11-05",
+    "time": "2:00 PM",
+    "location": "Lecture Hall C",
+    "image": "events-01.jpg"
+  },
+  {
+    "id": 13,
+    "title": "DevOps Principles",
+    "description": "Unlock the collaboration between development and operations in our DevOps Principles course. Learn about continuous integration, continuous delivery, and infrastructure as code. Dive into tools like Jenkins, GitLab, and Ansible. By the end of this course, you'll be equipped to streamline software development and deployment processes.",
+    "date": "2023-11-10",
+    "time": "10:30 AM",
+    "location": "Room 203",
+    "image": "events-01.jpg"
+  },
+  {
+    "id": 14,
+    "title": "Front-End Frameworks",
+    "description": "Master the art of front-end development with our Front-End Frameworks course. Explore popular frameworks like React, Angular, and Vue. Learn to build interactive and responsive user interfaces. Dive into state management and component-based architecture. By the end of this course, you'll be ready to create modern web experiences.",
+    "date": "2030-11-15",
+    "time": "1:00 PM",
+    "location": "Computer Lab B",
+    "image": "events-01.jpg"
+  },
+  {
+    "id": 15,
+    "title": "Blockchain Basics",
+    "description": "Delve into the revolutionary world of blockchain technology and cryptocurrencies with our Blockchain Basics course. Explore decentralized ledgers, smart contracts, and consensus mechanisms. Learn about the potential applications of blockchain beyond cryptocurrency. By the end of this course, you'll have a solid understanding of blockchain's impact on various industries.",
+    "date": "2023-11-20",
+    "time": "3:30 PM",
+    "location": "Lecture Hall A",
+    "image": "events-01.jpg"
+  },
+  {
+    "id": 16,
+    "title": "Mobile App Development",
+    "description": "Embark on a journey to create your own mobile apps in our Mobile App Development course. Learn to develop native applications for iOS and Android platforms. Explore cross-platform development using frameworks like Flutter or React Native. By the end of this course, you'll have the skills to bring your app ideas to life.",
+    "date": "2030-11-25",
+    "time": "10:00 AM",
+    "location": "Room 401",
+    "image": "events-01.jpg"
+  },
+  {
+    "id": 17,
+    "title": "IoT Workshop",
+    "description": "Immerse yourself in the world of the Internet of Things (IoT) with our hands-on IoT Workshop. Learn to build connected devices and IoT applications. Dive into sensor integration, data collection, and cloud connectivity. By the end of this workshop, you'll be ready to create innovative IoT projects.",
+    "date": "2023-11-30",
+    "time": "9:00 AM",
+    "location": "Computer Lab C",
+    "image": "events-01.jpg"
+  },
+  {
+    "id": 18,
+    "title": "Big Data Analytics",
+    "description": "Uncover the insights hidden within massive datasets in our Big Data Analytics course. Explore data processing frameworks like Hadoop and Spark. Learn to analyze and visualize data at scale. Dive into machine learning for big data applications. By the end of this course, you'll be equipped to handle and analyze data in the age of big data.",
+    "date": "2030-12-05",
+    "time": "2:30 PM",
+    "location": "Lecture Hall B",
+    "image": "events-01.jpg"
+  },
+  {
+    "id": 19,
+    "title": "Ethical Hacking Seminar",
+    "description": "Step into the shoes of an ethical hacker in our Ethical Hacking Seminar. Learn to identify and exploit vulnerabilities in computer systems and networks. Explore penetration testing, vulnerability assessment, and security best practices. By the end of this seminar, you'll have a strong foundation in ethical hacking and cybersecurity.",
+    "date": "2030-12-10",
+    "time": "1:00 PM",
+    "location": "Room 302",
+    "image": "events-01.jpg"
+  },
+  {
+    "id": 20,
+    "title": "IT Career Panel",
+    "description": "Navigate the diverse landscape of IT careers with our IT Career Panel. Join industry experts as they share insights into different career paths, from software development to cybersecurity and beyond. Gain valuable advice on building a successful IT career. By the end of this panel, you'll be equipped with knowledge to make informed career choices.",
+    "date": "2030-12-15",
+    "time": "4:00 PM",
+    "location": "Lecture Hall C",
+    "image": "events-01.jpg"
+  }
+]
