@@ -1,0 +1,20 @@
+@use "../../styles/variables" as v;
+
+.page-header {
+  background-image: linear-gradient(90deg, v.$color3, v.$color1, v.$color3);
+  text-align: center;
+  padding: 40px;
+  text-transform: uppercase;
+
+  h1 {
+    font-weight: 700;
+
+    &::before {
+      content: "○ ";
+    }
+
+    &::after {
+      content: " ○";
+    }
+  }
+}
