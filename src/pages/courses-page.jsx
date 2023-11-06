@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react";
+import Courses from "../components/courses/courses";
+import Spacer from "../components/common/spacer";
 
 const CoursesPage = () => {
   return (
-    <div>CoursesPage</div>
-  )
-}
+    <>
+      <Spacer />
+      <Courses />
+      <Spacer />
+    </>
+  );
+};
 
-export default CoursesPage
+export default CoursesPage;

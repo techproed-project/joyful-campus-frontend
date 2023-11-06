@@ -1,0 +1,33 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.event-card {
+  height: 100% !important;
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+
+
+    .card-subtitle {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      color: v.$color1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .image {
+      overflow: hidden;
+      img {
+        @include m.transition(transform 0.5s);
+        &:hover {
+          @include m.transform(scale(1.5) rotate(5deg));
+        }
+      }
+    }
+  }
+}

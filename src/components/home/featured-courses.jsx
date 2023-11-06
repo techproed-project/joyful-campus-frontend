@@ -2,6 +2,7 @@ import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import courses from "../../helpers/data/courses.json";
 import CourseCard from "../courses/course-card";
+import "./featured-courses.scss";
 
 const featuredCourses = courses.filter((item) => item.featured);
 
