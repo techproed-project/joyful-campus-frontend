@@ -1,0 +1,21 @@
+@use "../../styles/variables" as v;
+
+.contact-form {
+  
+
+  .form-control,
+  .input-group-text {
+    border: none;
+    background: none;
+    color: v.$color1;
+    border-bottom: 1px solid v.$color1-opacity-50;
+  }
+
+  .form-control {
+    color: v.$color2;
+
+    &::placeholder {
+      color: v.$color2-opacity-70;
+    }
+  }
+}

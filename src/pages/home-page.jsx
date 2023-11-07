@@ -4,6 +4,7 @@ import Welcome from '../components/about/welcome'
 import Spacer from '../components/common/spacer'
 import FeaturedCourses from '../components/home/featured-courses'
 import UpcomingEvents from '../components/home/upcoming-events'
+import MobileApp from '../components/home/mobile-app'
 
 const HomePage = () => {
   return (
@@ -16,6 +17,7 @@ const HomePage = () => {
       <Spacer/>
       <UpcomingEvents/>
       <Spacer/>
+      <MobileApp/>
     </>
   )
 }

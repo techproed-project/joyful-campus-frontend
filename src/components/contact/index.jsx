@@ -3,6 +3,7 @@ import { Card, Col, Container, Row } from "react-bootstrap";
 import Map from "./map";
 import ContactForm from "./contact-form";
 import GetInTouch from "./get-in-touch";
+import "./index.scss";
 
 const Contact = () => {
   return (

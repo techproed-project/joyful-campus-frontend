@@ -1,0 +1,33 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.contact {
+  h2 {
+    color: v.$color1;
+    margin-bottom: 40px;
+  }
+
+  .card {
+    box-shadow: 0 3px 10px -5px v.$color2;
+    border:none;
+    z-index:1;
+
+    .card-body {
+      padding: 50px;
+    }
+    
+    a{
+        color: v.$color2-opacity-70;
+    }
+
+    .nav-link{
+        margin-bottom: 15px;
+    }
+  }
+
+
+  iframe{
+    @include m.transform(translateY(-50px));
+    margin-bottom: -50px;
+  }
+}

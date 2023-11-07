@@ -5,6 +5,7 @@ import CoursesPage from "../pages/courses-page";
 import EventsPage from "../pages/events-page";
 import AboutPage from "../pages/about-page";
 import ContactPage from "../pages/contact-page";
+import LoginPage from "../pages/login-page";
 
 
 
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
             {
                 path:"contact",
                 element: <ContactPage/>
+            },
+            {
+                path:"login",
+                element: <LoginPage/>
             }
         ]
     }

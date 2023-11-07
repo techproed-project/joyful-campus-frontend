@@ -3,6 +3,7 @@
 This project has been developed by students of B153 B154, B155, B156, B178 batches 
 
 ## API
+* **Github:** https://github.com/techproed-project/joyful-campus-frontend
 * **Base URL:** https://mycampusmates.com/app
 * **Swagger:** https://mycampusmates.com/app/swagger-ui.html#
 * **Admin user:** root

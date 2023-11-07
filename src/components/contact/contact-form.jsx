@@ -7,6 +7,7 @@ import * as Yup from "yup";
 import ButtonSpinner from "../common/button-spinner";
 import { createMessage } from "../../api/contact-service";
 import { swalAlert } from "../../helpers/swal";
+import "./contact-form.scss";
 
 const ContactForm = () => {
   const [loading, setLoading] = useState(false);
@@ -21,8 +22,8 @@ const ContactForm = () => {
   const validationSchema = Yup.object({
     name: Yup.string().required("Required"),
     email: Yup.string().email("Invalid email address").required("Required"),
-    subject: Yup.string().required("Required"),
-    message: Yup.string().required("Required"),
+    subject: Yup.string().required("Required").min(4, "At least 4 charactes").max(50, "Max 50 characters"),
+    message: Yup.string().required("Required").min(4, "At least 4 charactes").max(50, "Max 50 characters"),
   });
 
   const onSubmit = async (values) => {
@@ -34,7 +35,8 @@ const ContactForm = () => {
         swalAlert("Your message has been sent","success")
         
     } catch (err) {
-        console.log(err);
+        const errMsg = Object.values(err.response.data.validations)[0];
+        swalAlert(errMsg,"error");
     }
     finally{
         setLoading(false);
@@ -49,7 +51,7 @@ const ContactForm = () => {
   });
 
   return (
-    <Form noValidate onSubmit={formik.handleSubmit}>
+    <Form noValidate onSubmit={formik.handleSubmit} className="contact-form">
       <h2>Send Me Message</h2>
 
       <Row>

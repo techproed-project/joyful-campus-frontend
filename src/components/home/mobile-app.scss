@@ -1,0 +1,10 @@
+@use "../../styles/variables" as v;
+@use "../../styles/mixins" as m;
+
+.mobile-app{
+    background-color: v.$color1;
+    @include m.borderRadius(5px);
+    padding: 50px;
+    text-align: center;
+    @include m.transform(translateY(50px));
+}
