@@ -31,8 +31,8 @@ const UserMenuAuth = () => {
       </Button>
 
       <Offcanvas className="bg-secondary" show={show} onHide={() => setShow(false)} placement="end">
-        <Offcanvas.Header closeButton closeVariant="white">
-          <Offcanvas.Title className="text-light">MENU</Offcanvas.Title>
+        <Offcanvas.Header closeButton className="bg-primary" style={{height: "47px"}}>
+          <Offcanvas.Title >MENU</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
           <Nav className="flex-column">
