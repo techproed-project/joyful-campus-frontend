@@ -11,7 +11,7 @@ export const swalAlert = (title, icon = "info", text = "") => {
 
 export const swalConfirm = (
   title,
-  icon = "info",
+  icon = "question",
   text = "",
   confirmButtonText = "Yes"
 ) => {

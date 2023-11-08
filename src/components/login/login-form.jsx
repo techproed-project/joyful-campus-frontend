@@ -9,6 +9,7 @@ import { setLocalStorage } from "../../helpers/encrypted-storage";
 import { useDispatch } from "react-redux";
 import { login as loginSuccess } from "../../store/slices/auth-slice";
 import { useNavigate } from "react-router-dom";
+import { swalAlert } from "../../helpers/swal";
 
 const LoginForm = () => {
   const [loading, setLoading] = useState(false);
@@ -35,11 +36,11 @@ const LoginForm = () => {
 
         setLocalStorage("token", token);
         dispatch(loginSuccess(user))
-
         navigate("/dashboard")
         
     } catch (err) {
-        
+        const errMsg = err.response.data.message;
+        swalAlert(errMsg, "error");
     }
     finally{
         setLoading(false);

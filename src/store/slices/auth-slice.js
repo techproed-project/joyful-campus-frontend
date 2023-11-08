@@ -1,8 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit"
+import { getMenuItems } from "../../helpers/user-menu";
 
 const initialState = {
     user: null,
-    isUserLogin: false
+    isUserLogin: false,
+    userMenu: []
 }
 
 
@@ -13,10 +15,12 @@ const authSlice = createSlice({
         login: (state, action) => {
             state.user = action.payload;
             state.isUserLogin = true;
+            state.userMenu = getMenuItems(action.payload.role)
         },
         logout: (state) => {
             state.user = null;
             state.isUserLogin = false;
+            state.userMenu = [];
         }
     }
 })
