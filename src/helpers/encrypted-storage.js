@@ -2,8 +2,6 @@ import { EncryptStorage } from 'encrypt-storage';
 
 const key = process.env.REACT_APP_STORAGE_ENCRYPTION_KEY;
 
-console.log(key);
-
 const encryptStorage = new EncryptStorage(key);
 
 export const setLocalStorage = (key, value) =>{

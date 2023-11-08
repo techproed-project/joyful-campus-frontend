@@ -5,10 +5,15 @@ import * as Yup from "yup";
 import ButtonSpinner from "../common/button-spinner";
 import PasswordInput from "../common/password-input";
 import { login } from "../../api/auth-service";
-import { getLocalStorage, setLocalStorage } from "../../helpers/encrypted-storage";
+import { setLocalStorage } from "../../helpers/encrypted-storage";
+import { useDispatch } from "react-redux";
+import { login as loginSuccess } from "../../store/slices/auth-slice";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const initialValues = {
     username: "roo",
@@ -29,10 +34,9 @@ const LoginForm = () => {
         const {token} = user;
 
         setLocalStorage("token", token);
-        console.log(getLocalStorage("token"))
-        // merkezi state i güncelle
-        // dispatch()
-        // navigate
+        dispatch(loginSuccess(user))
+
+        navigate("/dashboard")
         
     } catch (err) {
         
