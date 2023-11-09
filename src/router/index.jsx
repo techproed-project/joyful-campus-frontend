@@ -10,8 +10,8 @@ import DashboardPage from "../pages/dashboard/dashboard-page";
 import AdminPage from "../pages/dashboard/admin-page";
 import PrivateRoute from "./private-route";
 import { config } from "../helpers/config";
-import Error403 from "../pages/errors/error403";
-import Error404 from "../pages/errors/error404";
+import Error403Page from "../pages/errors/error403-page";
+import Error404Page from "../pages/errors/error404-page";
 
 const router = createBrowserRouter([
   {
@@ -65,11 +65,11 @@ const router = createBrowserRouter([
       },
       {
         path:"unauthorized",
-        element: <Error403/>
+        element: <Error403Page/>
       },
       {
         path:"*",
-        element: <Error404/>
+        element: <Error404Page/>
       },
     ],
   },
