@@ -1,8 +1,8 @@
 export const config = {
     project: {
         name: 'Joyful Campus',
-        slogan: "Empowering Minds, Building Futures: Your Gateway to IT Excellence!",
-        description: 'Unlock your potential with our IT school – where innovation meets education. Discover cutting-edge courses, expert instructors, and a dynamic learning environment. Join us on a journey to IT excellence!',
+        slogan: "Empowering Minds, Building Futures",
+        description: 'Unlock your potential with our IT school - where innovation meets education. Discover cutting-edge courses, expert instructors, and a dynamic learning environment. Join us on a journey to IT excellence!',
         version: '1.0.0',
     },
     contact:{
