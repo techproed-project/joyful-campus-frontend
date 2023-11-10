@@ -12,6 +12,7 @@ import PrivateRoute from "./private-route";
 import { config } from "../helpers/config";
 import Error403Page from "../pages/errors/error403-page";
 import Error404Page from "../pages/errors/error404-page";
+import ManagerPage from "../pages/dashboard/manager-page";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,14 @@ const router = createBrowserRouter([
             element: (
               <PrivateRoute roles={config.pageRoles.adminManagement}>
                 <AdminPage />
+              </PrivateRoute>
+            ),
+          },
+          {
+            path: "manager-management",
+            element: (
+              <PrivateRoute roles={config.pageRoles.managerManagement}>
+                <ManagerPage />
               </PrivateRoute>
             ),
           },

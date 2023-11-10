@@ -13,16 +13,19 @@ const UserMenuAuth = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleLogout = async () => { 
-        const resp = await swalConfirm("Are you sure to logout?");
-        if(!resp.isConfirmed) return;
+  const handleLogout = async () => {
+    const resp = await swalConfirm("Are you sure to logout?");
+    if (!resp.isConfirmed) return;
 
-        dispatch(logout());
-        removeLocalStorage("token");
-        navigate("/");
+    dispatch(logout());
+    removeLocalStorage("token");
+    navigate("/");
+  };
 
-
-   }
+  const handleNavigate = (link) => {
+    setShow(false);
+    navigate(link); 
+  };
 
   return (
     <>
@@ -30,18 +33,27 @@ const UserMenuAuth = () => {
         <FaUser /> {user.name} {user?.surname}
       </Button>
 
-      <Offcanvas className="bg-secondary" show={show} onHide={() => setShow(false)} placement="end">
-        <Offcanvas.Header closeButton className="bg-primary" style={{height: "47px"}}>
-          <Offcanvas.Title >MENU</Offcanvas.Title>
+      <Offcanvas
+        className="bg-secondary"
+        show={show}
+        onHide={() => setShow(false)}
+        placement="end"
+      >
+        <Offcanvas.Header
+          closeButton
+          className="bg-primary"
+          style={{ height: "47px" }}
+        >
+          <Offcanvas.Title>MENU</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
           <Nav className="flex-column">
-            <Nav.Link as={Link} to="/dashboard">
+            <Nav.Link onClick={() => handleNavigate("/dashboard")}>
               Dashboard
             </Nav.Link>
 
             {userMenu.map((item) => (
-              <Nav.Link as={Link} to={item.link} key={item.title}>
+              <Nav.Link onClick={() => handleNavigate(item.link)} key={item.title}>
                 {item.title}
               </Nav.Link>
             ))}

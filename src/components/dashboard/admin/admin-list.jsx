@@ -5,10 +5,11 @@ import { Column } from "primereact/column";
 import { deleteAdmin, getAdminsByPage } from "../../../api/admin-service";
 import { FaTrash } from "react-icons/fa";
 import { swalAlert, swalConfirm } from "../../../helpers/swal";
-import { useDispatch } from "react-redux";
-import { setOperation } from "../../../store/slices/misc-slice";
+import { useDispatch, useSelector } from "react-redux";
+import { refreshToken, setOperation } from "../../../store/slices/misc-slice";
 
 const AdminList = () => {
+  const { listRefreshToken } = useSelector((state) => state.misc);
   const [list, setList] = useState([]);
   const [totalRecords, setTotalRecords] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -37,6 +38,7 @@ const AdminList = () => {
     setLoading(true);
     try {
       await deleteAdmin(id);
+      dispatch(refreshToken())
       swalAlert("Admin was deleted", "success");
     } catch (err) {
       console.log(err);
@@ -75,7 +77,7 @@ const AdminList = () => {
   useEffect(() => {
     loadData();
     // eslint-disable-next-line
-  }, [lazyState]);
+  }, [lazyState, listRefreshToken]);
 
   return (
     <Container>
