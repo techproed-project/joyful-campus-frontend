@@ -5,6 +5,8 @@ import { Column } from "primereact/column";
 import { deleteAdmin, getAdminsByPage } from "../../../api/admin-service";
 import { FaTrash } from "react-icons/fa";
 import { swalAlert, swalConfirm } from "../../../helpers/swal";
+import { useDispatch } from "react-redux";
+import { setOperation } from "../../../store/slices/misc-slice";
 
 const AdminList = () => {
   const [list, setList] = useState([]);
@@ -15,6 +17,7 @@ const AdminList = () => {
     rows: 20,
     page: 0,
   });
+  const dispatch = useDispatch();
 
   const loadData = async () => {
     try {
@@ -65,8 +68,13 @@ const AdminList = () => {
     );
   };
 
+  const handleNew = () => {
+    dispatch(setOperation("new"));
+  };
+
   useEffect(() => {
     loadData();
+    // eslint-disable-next-line
   }, [lazyState]);
 
   return (
@@ -75,7 +83,7 @@ const AdminList = () => {
         <Card.Body>
           <Card.Title className="d-flex justify-content-between align-items-center">
             <span>List</span>
-            <Button>New</Button>
+            <Button onClick={handleNew}>New</Button>
           </Card.Title>
 
           <DataTable
