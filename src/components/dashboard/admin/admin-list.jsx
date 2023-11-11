@@ -41,7 +41,9 @@ const AdminList = () => {
       dispatch(refreshToken())
       swalAlert("Admin was deleted", "success");
     } catch (err) {
+      const msg = err.response.data.message;
       console.log(err);
+      swalAlert(msg, "error");
     } finally {
       setLoading(false);
     }

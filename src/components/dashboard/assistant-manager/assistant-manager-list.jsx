@@ -7,8 +7,9 @@ import { deleteManager, getManagersByPage } from "../../../api/manager-service";
 import { refreshToken, setOperation, setRecord } from "../../../store/slices/misc-slice";
 import { swalAlert, swalConfirm } from "../../../helpers/swal";
 import { FaTrash, FaEdit } from "react-icons/fa";
+import { deleteAssistantManager, getAssistantManagersByPage } from "../../../api/assistant-manager-service";
 
-const ManagerList = () => {
+const AssistantManagerList = () => {
   const { listRefreshToken } = useSelector((state) => state.misc);
   const [list, setList] = useState([]);
   const [totalRecords, setTotalRecords] = useState(0);
@@ -22,7 +23,7 @@ const ManagerList = () => {
 
   const loadData = async () => {
     try {
-      const resp = await getManagersByPage(lazyState.page, lazyState.rows);
+      const resp = await getAssistantManagersByPage(lazyState.page, lazyState.rows);
       setList(resp.content);
       setTotalRecords(resp.totalElements);
     } catch (err) {
@@ -37,9 +38,9 @@ const ManagerList = () => {
     if (!resp.isConfirmed) return;
     setLoading(true);
     try {
-      await deleteManager(id);
+      await deleteAssistantManager(id);
       dispatch(refreshToken());
-      swalAlert("Manager was deleted", "success");
+      swalAlert("Assitant Manager was deleted", "success");
     } catch (err) {
       const msg = err.response.data.message;
       console.log(err);
@@ -130,4 +131,4 @@ const ManagerList = () => {
   );
 };
 
-export default ManagerList;
+export default AssistantManagerList;

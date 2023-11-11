@@ -13,6 +13,7 @@ import { config } from "../helpers/config";
 import Error403Page from "../pages/errors/error403-page";
 import Error404Page from "../pages/errors/error404-page";
 import ManagerPage from "../pages/dashboard/manager-page";
+import AssistantManagerPage from "../pages/dashboard/assistant-manager-page";
 
 const router = createBrowserRouter([
   {
@@ -67,6 +68,14 @@ const router = createBrowserRouter([
             element: (
               <PrivateRoute roles={config.pageRoles.managerManagement}>
                 <ManagerPage />
+              </PrivateRoute>
+            ),
+          },
+          {
+            path: "assistant-manager-management",
+            element: (
+              <PrivateRoute roles={config.pageRoles.assistantManagerManagement}>
+                <AssistantManagerPage />
               </PrivateRoute>
             ),
           },

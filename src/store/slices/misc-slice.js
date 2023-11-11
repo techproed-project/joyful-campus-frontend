@@ -1,23 +1,27 @@
-import { createSlice } from "@reduxjs/toolkit"
-
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    currentOperation: null,
-    listRefreshToken: null
-}
+  currentOperation: null,
+  listRefreshToken: null,
+  currentRecord: null,
+};
 
 const miscSlice = createSlice({
-    name: "misc",
-    initialState,
-    reducers: {
-        setOperation: (state, action)=>{
-            state.currentOperation = action.payload;
-        },
-        refreshToken: (state)=>{
-            state.listRefreshToken = Math.random();
-        }
-    }
-})
+  name: "misc",
+  initialState,
+  reducers: {
+    setOperation: (state, action) => {
+      state.currentOperation = action.payload;
+    },
+    refreshToken: (state) => {
+      state.listRefreshToken = Math.random();
+    },
 
-export const { setOperation, refreshToken } = miscSlice.actions;
+    setRecord: (state, action) => {
+      state.currentRecord = action.payload;
+    },
+  },
+});
+
+export const { setOperation, refreshToken, setRecord } = miscSlice.actions;
 export default miscSlice.reducer;

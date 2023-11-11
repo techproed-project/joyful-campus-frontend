@@ -1,4 +1,3 @@
-import { useFormik } from "formik";
 import React, { useState } from "react";
 import {
   Button,
@@ -9,30 +8,22 @@ import {
   Form,
   Row,
 } from "react-bootstrap";
-import * as Yup from "yup";
 import ButtonSpinner from "../../common/button-spinner";
-import { createAdmin } from "../../../api/admin-service";
+import { useDispatch, useSelector } from "react-redux";
+import { updateManager } from "../../../api/manager-service";
+import { useFormik } from "formik";
+import { refreshToken, setOperation } from "../../../store/slices/misc-slice";
 import { swalAlert } from "../../../helpers/swal";
 import InputMask from "react-input-mask-next";
-import { useDispatch } from "react-redux";
-import { refreshToken, setOperation } from "../../../store/slices/misc-slice";
+import * as Yup from "yup";
+import { updateAssistantManager } from "../../../api/assistant-manager-service";
 
-const NewAdminForm = () => {
+const EditAssistantManagerForm = () => {
   const [loading, setLoading] = useState(false);
+  const { currentRecord } = useSelector((state) => state.misc);
   const dispatch = useDispatch();
 
-  const initialValues = {
-    birthDay: "",
-    birthPlace: "",
-    gender: "",
-    name: "",
-    password: "",
-    ssn: "",
-    surname: "",
-    username: "",
-    phoneNumber: "",
-    confirmPassword: "",
-  };
+  const initialValues = { ...currentRecord, password: "", confirmPassword: "" };
 
   const validationSchema = Yup.object({
     name: Yup.string().required("Required"),
@@ -64,13 +55,12 @@ const NewAdminForm = () => {
     setLoading(true);
 
     try {
-      await createAdmin(values);
-      dispatch(refreshToken()); // Listeyi güncellemek için
-      dispatch(setOperation(null)); // New formunu kapatmak için
+      await updateAssistantManager(values);
       formik.resetForm();
-      swalAlert("Admin was created", "success");
+      dispatch(refreshToken()); // Listeyi güncellemek için
+      dispatch(setOperation(null)); // Formu kapatmak için
+      swalAlert("Assistant Manager was updated", "success");
     } catch (err) {
-      console.log(err);
       const msg = Object.values(err.response.data.validations)[0];
       swalAlert(msg, "error");
     } finally {
@@ -78,21 +68,23 @@ const NewAdminForm = () => {
     }
   };
 
+  const handleCancel = () => {
+    dispatch(setOperation(null));
+  };
+
   const formik = useFormik({
     initialValues,
     validationSchema,
     onSubmit,
+    enableReinitialize: true,
+    // initialValues alanının tekrar tekrar değiştirilebilmesine izin verir
   });
-
-  const handleCancel = () => {
-    dispatch(setOperation(null));
-  };
 
   return (
     <Container>
       <Card>
         <Card.Body>
-          <Card.Title>New</Card.Title>
+          <Card.Title>Edit</Card.Title>
           <Form noValidate onSubmit={formik.handleSubmit}>
             <Row xs={1} sm={2} md={3} lg={4} className="g-3">
               <Col>
@@ -297,7 +289,7 @@ const NewAdminForm = () => {
                   type="submit"
                   disabled={!(formik.dirty && formik.isValid) || loading}
                 >
-                  {loading && <ButtonSpinner />} Create
+                  {loading && <ButtonSpinner />} Update
                 </Button>
               </Col>
             </Row>
@@ -308,4 +300,4 @@ const NewAdminForm = () => {
   );
 };
 
-export default NewAdminForm;
+export default EditAssistantManagerForm;

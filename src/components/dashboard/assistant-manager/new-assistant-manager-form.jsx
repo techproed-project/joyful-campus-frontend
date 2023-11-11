@@ -1,4 +1,3 @@
-import { useFormik } from "formik";
 import React, { useState } from "react";
 import {
   Button,
@@ -9,15 +8,16 @@ import {
   Form,
   Row,
 } from "react-bootstrap";
-import * as Yup from "yup";
 import ButtonSpinner from "../../common/button-spinner";
-import { createAdmin } from "../../../api/admin-service";
+import { useDispatch } from "react-redux";
+import { createAssistantManager } from "../../../api/assistant-manager-service";
+import { useFormik } from "formik";
+import { refreshToken, setOperation } from "../../../store/slices/misc-slice";
 import { swalAlert } from "../../../helpers/swal";
 import InputMask from "react-input-mask-next";
-import { useDispatch } from "react-redux";
-import { refreshToken, setOperation } from "../../../store/slices/misc-slice";
+import * as Yup from "yup";
 
-const NewAdminForm = () => {
+const NewAssistantManagerForm = () => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
@@ -64,13 +64,12 @@ const NewAdminForm = () => {
     setLoading(true);
 
     try {
-      await createAdmin(values);
+      await createAssistantManager(values);
+      formik.resetForm();
       dispatch(refreshToken()); // Listeyi güncellemek için
       dispatch(setOperation(null)); // New formunu kapatmak için
-      formik.resetForm();
-      swalAlert("Admin was created", "success");
+      swalAlert("Assistant Manager was created", "success");
     } catch (err) {
-      console.log(err);
       const msg = Object.values(err.response.data.validations)[0];
       swalAlert(msg, "error");
     } finally {
@@ -78,15 +77,15 @@ const NewAdminForm = () => {
     }
   };
 
+  const handleCancel = () => {
+    dispatch(setOperation(null));
+  };
+
   const formik = useFormik({
     initialValues,
     validationSchema,
     onSubmit,
   });
-
-  const handleCancel = () => {
-    dispatch(setOperation(null));
-  };
 
   return (
     <Container>
@@ -308,4 +307,4 @@ const NewAdminForm = () => {
   );
 };
 
-export default NewAdminForm;
+export default NewAssistantManagerForm;
