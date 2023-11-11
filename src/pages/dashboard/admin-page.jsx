@@ -21,6 +21,7 @@ const AdminPage = () => {
       )}
 
       <AdminList />
+      <Spacer />
     </>
   );
 };

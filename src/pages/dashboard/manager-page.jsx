@@ -29,6 +29,7 @@ const ManagerPage = () => {
       )}
 
       <ManagerList />
+      <Spacer />
     </>
   );
 };

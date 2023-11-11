@@ -29,6 +29,7 @@ const AssistantManagerPage = () => {
       )} 
 
       <AssistantManagerList />
+      <Spacer />
     </>
   );
 };
