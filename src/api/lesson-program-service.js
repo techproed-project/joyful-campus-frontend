@@ -13,6 +13,14 @@ export const getLessonProgramsByPage = async (page=0, size=20, sort="day", type=
     return data;
 }
 
+export const getAllLessonPrograms = async () => {
+    const resp = await axios.get(`${API_URL}/lessonPrograms/getAll`, {
+        headers: getAuthHeader()
+    });
+    const data = resp.data;
+    return data;
+}
+
 export const createLessonProgram = async (payload) => {
     const resp = await axios.post(`${API_URL}/lessonPrograms/save`, payload, {
         headers: getAuthHeader()
@@ -23,6 +31,14 @@ export const createLessonProgram = async (payload) => {
 
 export const deleteLessonProgram = async (id) => {
     const resp = await axios.delete(`${API_URL}/lessonPrograms/delete/${id}`, {
+        headers: getAuthHeader()
+    });
+    const data = resp.data;
+    return data;
+}
+
+export const getUnAssignedPrograms = async () => {
+    const resp = await axios.get(`${API_URL}/lessonPrograms/getAllUnassigned`, {
         headers: getAuthHeader()
     });
     const data = resp.data;

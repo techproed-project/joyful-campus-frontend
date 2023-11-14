@@ -8,6 +8,7 @@ import LessonList from "./lesson-list";
 import NewLessonForm from "./new-lesson-form";
 import LessonProgramList from "./lesson-program-list";
 import NewLessonProgramForm from "./new-lesson-program-form";
+import LessonAssignment from "./lesson-assignment";
 
 const LessonTabs = () => {
   const [key, setKey] = useState("terms");
@@ -51,6 +52,8 @@ const LessonTabs = () => {
           </>
         )}
         <LessonProgramList />
+        <Spacer/>
+        <LessonAssignment/>
       </Tab>
     </Tabs>
   );
