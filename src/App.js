@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { getMe } from "./api/auth-service";
 import { login, logout } from "./store/slices/auth-slice";
 import LoadingSpinner from "./components/common/loading-spinner";
-import { removeLocalStorage } from "./helpers/encrypted-storage";
+import { getLocalStorage, removeLocalStorage } from "./helpers/encrypted-storage";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -12,6 +12,8 @@ const App = () => {
 
   const loadData = async () => {
     try {
+      const token = getLocalStorage("token");
+      if(!token) throw new Error("No token");
       const user = await getMe();
       dispatch(login(user));
     } catch (err) {
