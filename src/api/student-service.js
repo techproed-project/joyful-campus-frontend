@@ -20,6 +20,14 @@ export const getStudentsByPage = async (
   return data;
 };
 
+export const getAllStudentsForAdvisor = async () => {
+  const resp = await axios.get(`${API_URL}/students/getAllByAdvisor`, {
+    headers: getAuthHeader(),
+  });
+  const data = resp.data;
+  return data;
+};
+
 export const createStudent = async (payload) => {
   const resp = await axios.post(`${API_URL}/students/save`, payload, {
     headers: getAuthHeader(),
@@ -38,7 +46,7 @@ export const deleteStudent = async (id) => {
 
 export const updateStudent = async (payload) => {
   const resp = await axios.put(
-    `${API_URL}/students/update/${payload.userId}`,
+    `${API_URL}/students/update/${payload.id}`,
     payload,
     {
       headers: getAuthHeader(),

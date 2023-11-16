@@ -17,6 +17,8 @@ import AssistantManagerPage from "../pages/dashboard/assistant-manager-page";
 import LessonPage from "../pages/dashboard/lesson-page";
 import TeacherPage from "../pages/dashboard/teacher-page";
 import StudentPage from "../pages/dashboard/student-page";
+import ContactMessagePage from "../pages/dashboard/contact-message-page";
+import StudentInfoPage from "../pages/dashboard/student-info-page";
 
 const router = createBrowserRouter([
   {
@@ -103,6 +105,22 @@ const router = createBrowserRouter([
             element: (
               <PrivateRoute roles={config.pageRoles.studentManagement}>
                 <StudentPage />
+              </PrivateRoute>
+            ),
+          },
+          {
+            path: "contact-messages",
+            element: (
+              <PrivateRoute roles={config.pageRoles.contactMessages}>
+                <ContactMessagePage />
+              </PrivateRoute>
+            ),
+          },
+          {
+            path: "student-info-management",
+            element: (
+              <PrivateRoute roles={config.pageRoles.studentInfoManagement}>
+                <StudentInfoPage />
               </PrivateRoute>
             ),
           },

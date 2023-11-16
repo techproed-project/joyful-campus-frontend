@@ -9,106 +9,102 @@ import {
   Row,
 } from "react-bootstrap";
 import ButtonSpinner from "../../common/button-spinner";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import { refreshToken, setOperation } from "../../../store/slices/misc-slice";
 import { swalAlert } from "../../../helpers/swal";
 import InputMask from "react-input-mask-next";
 import * as Yup from "yup";
-import { createStudent } from "../../../api/student-service";
+import { updateStudent } from "../../../api/student-service";
 import { getAllAdvisorTeachers } from "../../../api/advisor-teacher-service";
 
-const NewStudentForm = () => {
-  const [loading, setLoading] = useState(false);
-  const [advisorTeachers, setAdvisorTeachers] = useState([]);
-  const dispatch = useDispatch();
+const EditStudentForm = () => {
+    const [loading, setLoading] = useState(false);
+    const [advisorTeachers, setAdvisorTeachers] = useState([]);
+    const dispatch = useDispatch();
+    const { currentRecord } = useSelector(state=> state.misc);
 
-  const initialValues = {
-    birthDay: "",
-    birthPlace: "",
-    gender: "",
-    name: "",
-    password: "",
-    ssn: "",
-    surname: "",
-    username: "",
-    phoneNumber: "",
-    confirmPassword: "",
-    email: "",
-    advisorTeacherId: "",
-    motherName: "",
-    fatherName: "",
-  };
-
-  const validationSchema = Yup.object({
-    name: Yup.string().required("Required"),
-    surname: Yup.string().required("Required"),
-    gender: Yup.string()
-      .required("Required")
-      .oneOf(["MALE", "FEMALE"], "Invalid gender"),
-    birthDay: Yup.date().required("Required"),
-    birthPlace: Yup.string().required("Required"),
-    phoneNumber: Yup.string()
-      .required("Required")
-      .matches(/\d{3}-\d{3}-\d{4}/, "Invalid phone"),
-    ssn: Yup.string()
-      .required("Required")
-      .matches(/\d{3}-\d{2}-\d{4}/g, "Invalid ssn"),
-    email: Yup.string().email("Invalid email").required("Required"),
-    username: Yup.string().required("Required"),
-    advisorTeacherId: Yup.string().required("Required"),
-    motherName: Yup.string().required("Required"),
-    fatherName: Yup.string().required("Required"),
-    password: Yup.string()
-      .required("Required")
-      .min(8, "Must be at least 8 characters")
-      .matches(/[a-z]+/g, "One lowercase char")
-      .matches(/[A-Z]+/g, "One uppercase char")
-      .matches(/\d+/g, "One number"),
-    confirmPassword: Yup.string()
-      .required("Required")
-      .oneOf([Yup.ref("password")], "Passwords dosen't match"),
-  });
-
-  const onSubmit = async (values) => {
-    setLoading(true);
-
-    try {
-      await createStudent(values);
-      formik.resetForm();
-      dispatch(refreshToken()); // Listeyi güncellemek için
-      dispatch(setOperation(null)); // New formunu kapatmak için
-      swalAlert("Student was created", "success");
-    } catch (err) {
-      const msg = Object.values(err.response.data.validations)[0];
-      swalAlert(msg, "error");
-    } finally {
-      setLoading(false);
+    const initialValues = {
+        ...currentRecord,
+        password:"",
+        confirmPassword:"",
     }
-  };
 
-  const handleCancel = () => {
-    dispatch(setOperation(null));
-  };
+    const validationSchema = Yup.object({
+        name: Yup.string().required("Required"),
+        surname: Yup.string().required("Required"),
+        gender: Yup.string()
+          .required("Required")
+          .oneOf(["MALE", "FEMALE"], "Invalid gender"),
+        birthDay: Yup.date().required("Required"),
+        birthPlace: Yup.string().required("Required"),
+        phoneNumber: Yup.string()
+          .required("Required")
+          .matches(/\d{3}-\d{3}-\d{4}/, "Invalid phone"),
+        ssn: Yup.string()
+          .required("Required")
+          .matches(/\d{3}-\d{2}-\d{4}/g, "Invalid ssn"),
+        email: Yup.string().email("Invalid email").required("Required"),
+        username: Yup.string().required("Required"),
+        advisorTeacherId: Yup.string().required("Required"),
+        motherName: Yup.string().required("Required"),
+        fatherName: Yup.string().required("Required"),
+        password: Yup.string()
+          .required("Required")
+          .min(8, "Must be at least 8 characters")
+          .matches(/[a-z]+/g, "One lowercase char")
+          .matches(/[A-Z]+/g, "One uppercase char")
+          .matches(/\d+/g, "One number"),
+        confirmPassword: Yup.string()
+          .required("Required")
+          .oneOf([Yup.ref("password")], "Passwords dosen't match"),
+      });
 
-  const formik = useFormik({
-    initialValues,
-    validationSchema,
-    onSubmit,
-  });
 
-  const loadAdvisorTeachers = async () => {
-    try {
-      const data = await getAllAdvisorTeachers();
-      setAdvisorTeachers(data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+      const onSubmit = async (values) => {
+        setLoading(true);
+    
+        try {
+          await updateStudent(values);
+          formik.resetForm();
+          dispatch(refreshToken()); // Listeyi güncellemek için
+          dispatch(setOperation(null)); // New formunu kapatmak için
+          swalAlert("Student was updated", "success");
+        } catch (err) {
+          const msg = Object.values(err.response.data.validations)[0];
+          swalAlert(msg, "error");
+        } finally {
+          setLoading(false);
+        }
+      };
 
-  useEffect(() => {
-    loadAdvisorTeachers();
-  }, []);
+      const handleCancel = () => {
+        dispatch(setOperation(null));
+      };
+    
+      const formik = useFormik({
+        initialValues,
+        validationSchema,
+        onSubmit,
+        enableReinitialize: true
+      });
+    
+
+      const loadAdvisorTeachers = async () => {
+        try {
+          const data = await getAllAdvisorTeachers();
+          setAdvisorTeachers(data);
+        } catch (err) {
+          console.log(err);
+        }
+      };
+    
+      useEffect(() => {
+        loadAdvisorTeachers();
+      }, []);
+
+
+
 
   return (
     <Container>
@@ -404,7 +400,7 @@ const NewStudentForm = () => {
                   type="submit"
                   disabled={!(formik.dirty && formik.isValid) || loading}
                 >
-                  {loading && <ButtonSpinner />} Create
+                  {loading && <ButtonSpinner />} Update
                 </Button>
               </Col>
             </Row>
@@ -412,7 +408,7 @@ const NewStudentForm = () => {
         </Card.Body>
       </Card>
     </Container>
-  );
-};
+  )
+}
 
-export default NewStudentForm;
+export default EditStudentForm
