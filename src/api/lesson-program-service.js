@@ -21,6 +21,14 @@ export const getAllLessonPrograms = async () => {
     return data;
 }
 
+export const getAllLessonProgramByStudent = async () => {
+    const resp = await axios.get(`${API_URL}/lessonPrograms/getAllLessonProgramByStudent`, {
+        headers: getAuthHeader()
+    });
+    const data = resp.data;
+    return data;
+}
+
 export const createLessonProgram = async (payload) => {
     const resp = await axios.post(`${API_URL}/lessonPrograms/save`, payload, {
         headers: getAuthHeader()

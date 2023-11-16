@@ -24,6 +24,6 @@
     ],
     "student" : [
         { "title": "Choose Lesson", "link": "/dashboard/choose-lesson"},
-        { "title": "Grades & Announcements", "link": "/dashboard/grades-meets"}
+        { "title": "Grades & Meets", "link": "/dashboard/grades-meets"}
     ]
 }

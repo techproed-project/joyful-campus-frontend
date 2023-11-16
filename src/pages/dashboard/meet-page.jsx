@@ -2,35 +2,35 @@ import React from "react";
 import PageHeader from "../../components/common/page-header";
 import Spacer from "../../components/common/spacer";
 import { useSelector } from "react-redux";
-import StudentInfoList from "../../components/dashboard/student-info/student-info-list";
-import NewStudentInfoForm from "../../components/dashboard/student-info/new-student-info-form";
-import EditStudentInfoForm from "../../components/dashboard/student-info/edit-student-info-form";
-const StudentInfoPage = () => {
+import MeetList from "../../components/dashboard/meet/meet-list";
+import NewMeetForm from "../../components/dashboard/meet/new-meet-form";
+import EditMeetForm from "../../components/dashboard/meet/edit-meet-form";
+const MeetPage = () => {
   const { currentOperation } = useSelector((state) => state.misc);
 
   return (
     <>
-      <PageHeader title="Student Info" />
+      <PageHeader title="Meet" />
       <Spacer />
 
       {currentOperation === "new" && (
         <>
-          <NewStudentInfoForm />
-          <Spacer />
-        </>
-      )}
-      
-      {currentOperation === "edit" && (
-        <>
-          <EditStudentInfoForm />
+          <NewMeetForm />
           <Spacer />
         </>
       )}
 
-      <StudentInfoList />
+      {currentOperation === "edit" && (
+        <>
+          <EditMeetForm />
+          <Spacer />
+        </>
+      )}
+
+      <MeetList />
       <Spacer />
     </>
   );
 };
 
-export default StudentInfoPage;
+export default MeetPage;

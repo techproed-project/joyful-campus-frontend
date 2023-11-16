@@ -11,11 +11,11 @@ import {
 import { swalAlert, swalConfirm } from "../../../helpers/swal";
 import { FaTrash, FaEdit } from "react-icons/fa";
 import {
-  deleteStudentInfo,
-  getStudentInfoByPageForTeacher,
-} from "../../../api/student-info-service";
+  deleteMeet,
+  getAllMeetsByPageForAdvisorTeacher,
+} from "../../../api/meet-service";
 
-const StudentInfoList = () => {
+const MeetList = () => {
   const { listRefreshToken } = useSelector((state) => state.misc);
   const [list, setList] = useState([]);
   const [totalRecords, setTotalRecords] = useState(0);
@@ -29,7 +29,7 @@ const StudentInfoList = () => {
 
   const loadData = async () => {
     try {
-      const resp = await getStudentInfoByPageForTeacher(
+      const resp = await getAllMeetsByPageForAdvisorTeacher(
         lazyState.page,
         lazyState.rows
       );
@@ -47,9 +47,9 @@ const StudentInfoList = () => {
     if (!resp.isConfirmed) return;
     setLoading(true);
     try {
-      await deleteStudentInfo(id);
+      await deleteMeet(id);
       dispatch(refreshToken());
-      swalAlert("Info was deleted", "success");
+      swalAlert("Meet was deleted", "success");
     } catch (err) {
       const msg = err.response.data.message;
       console.log(err);
@@ -62,6 +62,10 @@ const StudentInfoList = () => {
   const handleEdit = (row) => {
     dispatch(setRecord(row));
     dispatch(setOperation("edit"));
+  };
+
+  const handleNew = () => {
+    dispatch(setOperation("new"));
   };
 
   const onPage = (event) => {
@@ -93,14 +97,9 @@ const StudentInfoList = () => {
     );
   };
 
-  const getFullName = (row) => {
-    console.log(row)
-    return `${row.studentResponse.name} ${row.studentResponse.surname}`;
-  };
-
-  const handleNew = () => {
-    dispatch(setOperation("new"));
-  };
+  const getStudents = (row) => { 
+    return row.students.map(item=> `${item.name} ${item.surname}`).join("-")
+   }
 
   useEffect(() => {
     loadData();
@@ -128,14 +127,11 @@ const StudentInfoList = () => {
             loading={loading}
             tableStyle={{ minWidth: "50rem" }}
           >
-            <Column body={getFullName} header="Name" />
-            <Column field="lessonName" header="Lesson" />
-            <Column field="absentee" header="Absentee" />
-            <Column field="midtermExam" header="Midterm" />
-            <Column field="finalExam" header="Final" />
-            <Column field="note" header="Score" />
-            <Column field="infoNote" header="Note" />
-            <Column field="average" header="Average" />
+            <Column field="date" header="Date" />
+            <Column field="startTime" header="Start Time" />
+            <Column field="stopTime" header="End Time" />
+            <Column field="description" header="Description" />
+            <Column body={getStudents} header="Students" />
             <Column body={getOperations} header="" />
           </DataTable>
         </Card.Body>
@@ -144,4 +140,4 @@ const StudentInfoList = () => {
   );
 };
 
-export default StudentInfoList;
+export default MeetList;

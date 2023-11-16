@@ -9,32 +9,28 @@ import {
   Row,
 } from "react-bootstrap";
 import ButtonSpinner from "../../common/button-spinner";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import { refreshToken, setOperation } from "../../../store/slices/misc-slice";
 import { swalAlert } from "../../../helpers/swal";
 import * as Yup from "yup";
-import { createStudentInfo } from "../../../api/student-info-service";
 import { getAllStudentsForAdvisor } from "../../../api/student-service";
 import { getAllLessons } from "../../../api/lesson-service";
 import { getAllEducationTerms } from "../../../api/education-term-service";
 import { config } from "../../../helpers/config";
+import { updateStudentInfo } from "../../../api/student-info-service";
 
-const NewStudentInfoForm = () => {
+const EditStudentInfoForm = () => {
   const [loading, setLoading] = useState(false);
   const [lessons, setLessons] = useState([]);
   const [students, setStudents] = useState([]);
   const [terms, setTerms] = useState([]);
   const dispatch = useDispatch();
+  const { currentRecord } = useSelector((state) => state.misc);
 
   const initialValues = {
-    absentee: "",
-    educationTermId: "",
-    finalExam: "",
-    infoNote: "",
-    lessonId: "",
-    midtermExam: "",
-    studentId: "",
+    ...currentRecord,
+    studentId: currentRecord.studentResponse.userId,
   };
 
   const validationSchema = Yup.object({
@@ -56,11 +52,11 @@ const NewStudentInfoForm = () => {
     setLoading(true);
 
     try {
-      await createStudentInfo(values);
+      await updateStudentInfo(values);
       formik.resetForm();
       dispatch(refreshToken()); // Listeyi güncellemek için
       dispatch(setOperation(null)); // New formunu kapatmak için
-      swalAlert("Info was created", "success");
+      swalAlert("Info was updated", "success");
     } catch (err) {
       const msg = Object.values(err.response.data.validations)[0];
       swalAlert(msg, "error");
@@ -104,6 +100,7 @@ const NewStudentInfoForm = () => {
     initialValues,
     validationSchema,
     onSubmit,
+    enableReinitialize: true,
   });
 
   useEffect(() => {
@@ -216,7 +213,9 @@ const NewStudentInfoForm = () => {
                     type="number"
                     placeholder=""
                     {...formik.getFieldProps("absentee")}
-                    isInvalid={formik.touched.absentee && formik.errors.absentee}
+                    isInvalid={
+                      formik.touched.absentee && formik.errors.absentee
+                    }
                   />
                   <Form.Control.Feedback type="invalid">
                     {formik.errors.absentee}
@@ -234,7 +233,9 @@ const NewStudentInfoForm = () => {
                     type="number"
                     placeholder=""
                     {...formik.getFieldProps("midtermExam")}
-                    isInvalid={formik.touched.midtermExam && formik.errors.midtermExam}
+                    isInvalid={
+                      formik.touched.midtermExam && formik.errors.midtermExam
+                    }
                   />
                   <Form.Control.Feedback type="invalid">
                     {formik.errors.midtermExam}
@@ -252,7 +253,9 @@ const NewStudentInfoForm = () => {
                     type="number"
                     placeholder=""
                     {...formik.getFieldProps("finalExam")}
-                    isInvalid={formik.touched.finalExam && formik.errors.finalExam}
+                    isInvalid={
+                      formik.touched.finalExam && formik.errors.finalExam
+                    }
                   />
                   <Form.Control.Feedback type="invalid">
                     {formik.errors.finalExam}
@@ -270,7 +273,9 @@ const NewStudentInfoForm = () => {
                     type="text"
                     placeholder=""
                     {...formik.getFieldProps("infoNote")}
-                    isInvalid={formik.touched.infoNote && formik.errors.infoNote}
+                    isInvalid={
+                      formik.touched.infoNote && formik.errors.infoNote
+                    }
                   />
                   <Form.Control.Feedback type="invalid">
                     {formik.errors.infoNote}
@@ -292,7 +297,7 @@ const NewStudentInfoForm = () => {
                   type="submit"
                   disabled={!(formik.dirty && formik.isValid) || loading}
                 >
-                  {loading && <ButtonSpinner />} Create
+                  {loading && <ButtonSpinner />} Update
                 </Button>
               </Col>
             </Row>
@@ -303,4 +308,4 @@ const NewStudentInfoForm = () => {
   );
 };
 
-export default NewStudentInfoForm;
+export default EditStudentInfoForm;
