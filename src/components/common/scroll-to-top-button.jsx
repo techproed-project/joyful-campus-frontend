@@ -12,7 +12,7 @@ const ScrollToTopButton = () => {
      }
 
   return (
-    <Button class="btn btn-primary btn-scroll" onClick={handleClick}>
+    <Button className="btn btn-primary btn-scroll" onClick={handleClick}>
       <FaArrowUp />
     </Button>
   );
