@@ -15,9 +15,9 @@ import { refreshToken, setOperation } from "../../../store/slices/misc-slice";
 import { swalAlert } from "../../../helpers/swal";
 import * as Yup from "yup";
 import { MultiSelect } from "primereact/multiselect";
-import { createMeet, updateMeet } from "../../../api/meet-service";
+import { updateMeet } from "../../../api/meet-service";
 import { getAllStudentsForAdvisor } from "../../../api/student-service";
-import { current } from "@reduxjs/toolkit";
+import { formatTime } from "../../../helpers/date-time";
 
 const EditMeetForm = () => {
   const [loading, setLoading] = useState(false);
@@ -28,6 +28,8 @@ const EditMeetForm = () => {
 
   const initialValues = {
     ...currentRecord,
+    startTime: formatTime(currentRecord.startTime),
+    stopTime: formatTime(currentRecord.stopTime),
     studentIds: currentRecord.students.map((item) => item.id),
   };
 
@@ -45,6 +47,7 @@ const EditMeetForm = () => {
   const onSubmit = async (values) => {
     setLoading(true);
 
+   
     try {
       await updateMeet(values);
       formik.resetForm();
@@ -52,7 +55,8 @@ const EditMeetForm = () => {
       dispatch(setOperation(null)); // New formunu kapatmak için
       swalAlert("Meet was updated", "success");
     } catch (err) {
-      const msg = Object.values(err.response.data.validations)[0];
+      console.log(err);
+      const msg = "Unexpected error";
       swalAlert(msg, "error");
     } finally {
       setLoading(false);
@@ -92,7 +96,7 @@ const EditMeetForm = () => {
     <Container>
       <Card>
         <Card.Body>
-          <Card.Title>New</Card.Title>
+          <Card.Title>Edit</Card.Title>
           <Form noValidate onSubmit={formik.handleSubmit}>
             <Row className="g-3">
               <Col xs={12}>

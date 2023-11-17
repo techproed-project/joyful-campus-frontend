@@ -55,3 +55,11 @@ export const updateStudent = async (payload) => {
   const data = resp.data;
   return data;
 };
+
+export const chooseLesson = async (payload) => {
+  const resp = await axios.post(`${API_URL}/students/chooseLesson`, payload, {
+    headers: getAuthHeader(),
+  });
+  const data = resp.data;
+  return data;
+};

@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Button, Nav, Offcanvas } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { FaUser } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { swalConfirm } from "../../helpers/swal";
 import { logout } from "../../store/slices/auth-slice";
 import { removeLocalStorage } from "../../helpers/encrypted-storage";
+import { setOperation, setRecord } from "../../store/slices/misc-slice";
 
 const UserMenuAuth = () => {
   const [show, setShow] = useState(false);
@@ -24,6 +25,8 @@ const UserMenuAuth = () => {
 
   const handleNavigate = (link) => {
     setShow(false);
+    dispatch(setOperation(null))
+    dispatch(setRecord(null))
     navigate(link); 
   };
 

@@ -21,6 +21,23 @@ export const getStudentInfoByPageForTeacher = async (
 };
 
 
+export const getStudentInfoByPageForStudent = async (
+  page = 0,
+  size = 2,
+  sort = "educationTermId",
+  type = "asc"
+) => {
+  const resp = await axios.get(
+    `${API_URL}/studentInfo/getAllByStudent?page=${page}&size=${size}&sort=${sort}&type=${type}`,
+    {
+      headers: getAuthHeader(),
+    }
+  );
+  const data = resp.data;
+  return data;
+};
+
+
 export const createStudentInfo = async (payload) => {
   const resp = await axios.post(`${API_URL}/studentInfo/save`, payload, {
     headers: getAuthHeader(),

@@ -113,7 +113,7 @@ const EditStudentInfoForm = () => {
     <Container>
       <Card>
         <Card.Body>
-          <Card.Title>New</Card.Title>
+          <Card.Title>Edit</Card.Title>
           <Form noValidate onSubmit={formik.handleSubmit}>
             <Row xs={1} sm={2} md={3} lg={4} className="g-3">
               <Col>
